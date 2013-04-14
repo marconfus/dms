@@ -1,0 +1,15 @@
+Frequence Jazz;http://broadcast.infomaniak.ch/jazzradio-high.aac;frequence_jazz.png;1
+M FM;http://mfm.ice.infomaniak.ch:80/mfm-128.mp3;mfm.png;2
+DRadio Kultur;http://www.dradio.de/streaming/dkultur.m3u;dradiokultur.png;3
+FM4;http://mp3stream1.apasf.apa.at:8000/listen.pls;fm4.png;4
+TSF Jazz;http://broadcast.infomaniak.net:80/tsfjazz-high.mp3;tsf.png;5
+WDR 3;http://www.wdr.de/wdrlive/media/wdr3.m3u;wdr3.png;6
+WDR 5;http://www.wdr.de/wdrlive/media/wdr5.m3u;wdr5.png;7
+Radio Classique;http://players.creacast.com/creacast/classique/playlist.pls;classique.png;9
+France Musique;http://www.tv-radio.com/station/france_musique_mp3/france_musique_mp3-128k.m3u;francemusique.png;10
+France Bleu;http://mp3.live.tv-radio.com/fbidf/all/fbidfhautdebit.mp3;francebleu.png;11
+FIP;http://gisv3.tv-radio.com/station/fip_mp3/fip_mp3-128k.m3u;fip.png;12
+Le Mouv;http://gisv3.tv-radio.com/station/le_mouv_mp3/le_mouv_mp3-128k.m3u;lemouv.png;13
+Venice Classic Radio;http://www.radioonda.it/live2/128.pls;vcr.png;14
+SSR Radio Suisse Classique;http://www.radiosuisseclassique.ch/live/mp3.m3u;suisseclassique.png;15
+
