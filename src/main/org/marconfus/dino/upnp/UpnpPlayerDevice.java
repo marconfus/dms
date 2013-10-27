@@ -20,6 +20,8 @@ public class UpnpPlayerDevice extends PlayerDevice {
 
 	RemoteDevice upnpDevice;
 	RemoteService remoteService;
+	
+	RadioStation currentStation;
 
 	public UpnpPlayerDevice(String name, String id) {
 		super(name, id);
@@ -81,6 +83,7 @@ public class UpnpPlayerDevice extends PlayerDevice {
 		try {
 			URL = station.getStreamURL();
 			playStream(URL);
+			currentStation = station;
 		} catch (Exception e) {
 			logger.error(e);
 		}
@@ -117,4 +120,7 @@ public class UpnpPlayerDevice extends PlayerDevice {
 		}
 	}
 
+	public RadioStation getCurrentStation() {
+		return currentStation;
+	}
 }

@@ -12,4 +12,9 @@ FIP;http://gisv3.tv-radio.com/station/fip_mp3/fip_mp3-128k.m3u;fip.png;12
 Le Mouv;http://gisv3.tv-radio.com/station/le_mouv_mp3/le_mouv_mp3-128k.m3u;lemouv.png;13
 Venice Classic Radio;http://www.radioonda.it/live2/128.pls;vcr.png;14
 SSR Radio Suisse Classique;http://www.radiosuisseclassique.ch/live/mp3.m3u;suisseclassique.png;15
-
+Click FM;http://clickfm.co.il/listen128.m3u;;16
+Kol Ha Campus 106 FM;http://212.29.254.129:7075/;;17
+BBC Radio 2;http://www.bbc.co.uk/radio/listen/live/r2_aaclca.pls;;18
+BBC Radio 3;http://www.bbc.co.uk/radio/listen/live/r3_aaclca.pls;;19
+BBC Radio 4;http://www.bbc.co.uk/radio/listen/live/r4_aaclca.pls;;20
+FM 99 FM;mms://194.90.203.111/99fm;;21

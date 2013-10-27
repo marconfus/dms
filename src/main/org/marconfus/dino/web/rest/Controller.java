@@ -1,5 +1,10 @@
 package org.marconfus.dino.web.rest;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -9,6 +14,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.marconfus.dino.model.AppConfig;
 import org.marconfus.dino.model.PlayerDevice;
 import org.marconfus.dino.model.PlayerDeviceDb;
@@ -53,7 +61,7 @@ public class Controller {
 	@GET
 	@Path("/selectplayer/{id}")
 	@Produces(MediaType.TEXT_HTML)
-	public String selectStation(@PathParam("id") String id, @Context HttpServletRequest httpRequest) {
+	public String setPlayer(@PathParam("id") String id, @Context HttpServletRequest httpRequest) {
 		logger.info("Selecting player " + id);
 		PlayerDevice player = PlayerDeviceDb.getInstance().findByID(id);
 		AppConfig.getInstance().setSelectedPlayer(player);
@@ -61,4 +69,49 @@ public class Controller {
 		return ("OK");
 	}
 	
+	@GET
+	@Path("/player")
+	@Produces(MediaType.TEXT_HTML)
+	public String getPlayer() {
+		PlayerDevice player=AppConfig.getInstance().getSelectedPlayer();
+		String name;
+		if (player==null) {
+			name="None";
+		} else {
+			name=player.getName();
+		}
+		return (name);
+	}
+	
+	@GET
+	@Path("/currentstation")
+	@Produces(MediaType.TEXT_HTML)
+	public String getCurrentStation() {
+		UpnpPlayerDevice player = (UpnpPlayerDevice) AppConfig.getInstance().getSelectedPlayer();
+		
+		if (player==null) {
+			return ("Unkown");
+		} else {
+			return(player.getCurrentStation().getName());
+		}
+	}
+	
+	@GET
+	@Path("/stations")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getStations() throws JsonGenerationException, JsonMappingException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+
+		ArrayList<HashMap> stations = new ArrayList<HashMap>();
+		
+		for (RadioStation rs : RadioStationDb.getInstance().getStations()) {
+			HashMap<String, String> stationMap = new HashMap<String, String>();
+			stationMap.put("id", rs.getID());
+			stationMap.put("name", rs.getName());
+			stations.add(stationMap);
+		}
+		String json = mapper.writeValueAsString(stations);
+		
+		return (json);
+	}
 }
