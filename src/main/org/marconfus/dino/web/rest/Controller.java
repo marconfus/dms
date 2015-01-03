@@ -3,7 +3,6 @@ package org.marconfus.dino.web.rest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
@@ -96,12 +95,12 @@ public class Controller {
 		}
 	}
 	
+	@SuppressWarnings("rawtypes")
 	@GET
 	@Path("/stations")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getStations() throws JsonGenerationException, JsonMappingException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
-
 		ArrayList<HashMap> stations = new ArrayList<HashMap>();
 		
 		for (RadioStation rs : RadioStationDb.getInstance().getStations()) {
@@ -112,6 +111,25 @@ public class Controller {
 		}
 		String json = mapper.writeValueAsString(stations);
 		
+		return (json);
+	}
+	
+	@SuppressWarnings("rawtypes")
+	@GET
+	@Path("availablePlayers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getAvailablePlayers() throws JsonGenerationException, JsonMappingException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		ArrayList<HashMap> players = new ArrayList<HashMap>();
+
+		for (PlayerDevice player : PlayerDeviceDb.getInstance().getPlayers()) {
+			HashMap<String, String> playerMap = new HashMap<String, String>();
+			playerMap.put("id", player.getID());
+			playerMap.put("name", player.getName());
+			
+			players.add(playerMap);
+		}
+		String json = mapper.writeValueAsString(players);
 		return (json);
 	}
 }
